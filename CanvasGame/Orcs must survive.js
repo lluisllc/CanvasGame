@@ -3,15 +3,15 @@ const ctx = canvas.getContext("2d");
 
 canvas.style.backgroundColor = "lightgray";
 
-let cocheImagen = new Image();
-cocheImagen.src = "src/coche.png";
+let orcoImagen = new Image();
+orcoImagen.src = "src/Orc3_OK.png";
 
 let obstaculoImagen = new Image();
 obstaculoImagen.src = "src/obstaculo.png";
 
 const obstaculos = [];
 
-const coche = new Objeto(250, 0, 60, 60, cocheImagen, ctx);
+const orco = new Objeto(250, 0, 60, 60, orcoImagen, ctx);
 
 const jugar = () => {
     for (let obstaculo of obstaculos) {
@@ -43,21 +43,21 @@ const cargaInicial = () => {
     setInterval(crearObstaculos, 3000);
 };
 
-const moverCoche = (e) => {
-    coche.borrar();
+const moverOrco = (e) => {
+    orco.borrar();
     if (e.key === "ArrowLeft") {
-        coche.x -= 5;
+        orco.x -= 5;
     }
     if (e.key === "ArrowRight") {
-        coche.x += 5;
+        orco.x += 5;
     }
     if (e.key === "ArrowUp") {
-        coche.y -= 5;
+        orco.y -= 5;
     }
     if (e.key === "ArrowDown") {
-        coche.y += 5;
+        orco.y += 5;
     }
-    coche.dibujar();
+    orco.dibujar();
 };
 
 window.addEventListener("load", cargaInicial);
