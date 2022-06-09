@@ -1,11 +1,13 @@
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
 
-canvas.style.backgroundColor = "lightgray";
-
 let orcoImagen = new Image();
-orcoImagen.src = "src/Orc3_OK.png";
+orcoImagen.src = "./Wizard sense terra.png"
 
+orcoImagen.onload = function () {
+    ctx.drawImage(orcoImagen, 50, 50, 150, 100);
+}
+/*
 let obstaculoImagen = new Image();
 obstaculoImagen.src = "src/obstaculo.png";
 
@@ -62,4 +64,6 @@ const moverOrco = (e) => {
 
 window.addEventListener("load", cargaInicial);
 
-window.addEventListener("keydown", moverCoche);
+window.addEventListener("keydown", moverOrco);
+
+*/
