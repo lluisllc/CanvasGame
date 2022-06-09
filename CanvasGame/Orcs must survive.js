@@ -2,17 +2,17 @@ const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
 
 let heroImagen = new Image();
-heroImagen.src = "./Monk b.png"
+heroImagen.src = "./Goblin ghost.png"
 
 heroImagen.onload = function () {
-    ctx.drawImage(heroImagen, 120, 50, 120, 150);
+    ctx.drawImage(heroImagen, 140, 50, 160, 160);
 }
 
 let enemigoImagen = new Image();
-enemigoImagen.src = "./Orc 2d.png";
+enemigoImagen.src = "./Orc 6.png"
 
 enemigoImagen.onload = function () {
-    ctx.drawImage(enemigoImagen, 320, 50, 120, 150);
+    ctx.drawImage(enemigoImagen, 320, 50, 180, 180);
 
     enemigoImagen.onload = function () {
         ctx.drawImage(enemigoImagen, 320, 150, 120, 150);
