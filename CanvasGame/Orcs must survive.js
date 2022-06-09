@@ -1,19 +1,42 @@
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
 
-let orcoImagen = new Image();
-orcoImagen.src = "./Wizard sense terra.png"
+let heroImagen = new Image();
+heroImagen.src = "./Monk b.png"
 
-orcoImagen.onload = function () {
-    ctx.drawImage(orcoImagen, 50, 50, 150, 100);
+heroImagen.onload = function () {
+    ctx.drawImage(heroImagen, 120, 50, 120, 150);
 }
-/*
-let obstaculoImagen = new Image();
-obstaculoImagen.src = "src/obstaculo.png";
 
+let enemigoImagen = new Image();
+enemigoImagen.src = "./Orc 2d.png";
+
+enemigoImagen.onload = function () {
+    ctx.drawImage(enemigoImagen, 320, 50, 120, 150);
+
+    enemigoImagen.onload = function () {
+        ctx.drawImage(enemigoImagen, 320, 150, 120, 150);
+
+        enemigoImagen.onload = function () {
+            ctx.drawImage(enemigoImagen, 320, 250, 120, 150);
+
+            enemigoImagen.onload = function () {
+                ctx.drawImage(enemigoImagen, 320, 350, 120, 150);
+
+                enemigoImagen.onload = function () {
+                    ctx.drawImage(enemigoImagen, 320, 450, 120, 150);
+
+                }
+            }
+        }
+    }
+}
+
+
+/*
 const obstaculos = [];
 
-const orco = new Objeto(250, 0, 60, 60, orcoImagen, ctx);
+const hero = new Objeto(250, 0, 60, 60, heroImagen, ctx);
 
 const jugar = () => {
     for (let obstaculo of obstaculos) {
@@ -45,8 +68,8 @@ const cargaInicial = () => {
     setInterval(crearObstaculos, 3000);
 };
 
-const moverOrco = (e) => {
-    orco.borrar();
+const moverHero = (e) => {
+    hero.borrar();
     if (e.key === "ArrowLeft") {
         orco.x -= 5;
     }
@@ -59,11 +82,11 @@ const moverOrco = (e) => {
     if (e.key === "ArrowDown") {
         orco.y += 5;
     }
-    orco.dibujar();
+    hero.dibujar();
 };
 
 window.addEventListener("load", cargaInicial);
 
-window.addEventListener("keydown", moverOrco);
+window.addEventListener("keydown", moverHero);
 
 */
