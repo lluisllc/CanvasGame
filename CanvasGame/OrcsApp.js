@@ -5,7 +5,7 @@ const OrcsApp = {
     canvasSize: { w: undefined, h: undefined },
     intervalId: undefined,
     framesCounter: 0,
-    obstacles: [],
+    enemies: [],
     //animals: [],
     speed: 1,
     score: 0,
@@ -15,14 +15,15 @@ const OrcsApp = {
         this.setContext(canvas);
         this.setCanvasDimensions(canvas);
 
-        this.playStartingSound(audio2);
+        // this.playStartingSound(audio2);
         this.imageBackground = new Image();
         this.imageBackground.src = "./campo5.webp";
-        this.endgame = endgame;
+        // this.endgame = endgame;
         this.scoreEnd = scoreEnd;
         this.buttonRestart = buttonRestart;
         this.createNewHero();
 
+        /* LLC
         //block eventlisteners in menu while playing, we just add a class with all that we need to prevent it
         const gameMenuHero = document.getElementById("gameMenu");
         gameMenuHero.classList.add("noPointers");
@@ -34,7 +35,7 @@ const OrcsApp = {
             // Esto podría estar en otra función, pero ha de estar disponible en todos los sitios
             // si fuese const, no podria ser, por eso le decimos this y lo inicializamos en el objeto
         }, 4000);
-
+        LLC */
         //Que el coche se mueva
         this.setListeners();
         this.refreshScreen();
@@ -63,23 +64,23 @@ const OrcsApp = {
         document.addEventListener("keydown", (e) => {
             e.key === "ArrowUp" ? (this.newHero.moveUp = true) : null;
             e.key === "ArrowDown" ? (this.newHero.moveDown = true) : null;
-            e.key === "ArrowLeft" ? (this.newHero.moveLeft = true) : null;
-            e.key === "ArrowRight" ? (this.newHero.moveRight = true) : null;
+            //e.key === "ArrowLeft" ? (this.newHero.moveLeft = true) : null;
+            //e.key === "ArrowRight" ? (this.newHero.moveRight = true) : null;
             e.code === "KeyW" ? (this.newHero.moveUpGamer = true) : null;
             e.code === "KeyS" ? (this.newHero.moveDownGamer = true) : null;
-            e.code === "KeyA" ? (this.newHero.moveLeftGamer = true) : null;
-            e.code === "KeyD" ? (this.newHero.moveRightGamer = true) : null;
+            //e.code === "KeyA" ? (this.newHero.moveLeftGamer = true) : null;
+            //e.code === "KeyD" ? (this.newHero.moveRightGamer = true) : null;
         });
         //condicion ternaria, despues del interrogante es el true, despues de los 2 puntos es el false
         document.addEventListener("keyup", (e) => {
             e.key === "ArrowUp" ? (this.newHero.moveUp = false) : null;
             e.key === "ArrowDown" ? (this.newHero.moveDown = false) : null;
-            e.key === "ArrowLeft" ? (this.newHero.moveLeft = false) : null;
-            e.key === "ArrowRight" ? (this.newHero.moveRight = false) : null;
+            //e.key === "ArrowLeft" ? (this.newHero.moveLeft = false) : null;
+            // e.key === "ArrowRight" ? (this.newHero.moveRight = false) : null;
             e.code === "KeyW" ? (this.newHero.moveUpGamer = false) : null;
             e.code === "KeyS" ? (this.newHero.moveDownGamer = false) : null;
-            e.code === "KeyA" ? (this.newHero.moveLeftGamer = false) : null;
-            e.code === "KeyD" ? (this.newHero.moveRightGamer = false) : null;
+            //e.code === "KeyA" ? (this.newHero.moveLeftGamer = false) : null;
+            // e.code === "KeyD" ? (this.newHero.moveRightGamer = false) : null;
         });
     },
 
@@ -106,31 +107,31 @@ const OrcsApp = {
             //this.createAnimal();
         }
     },
-
-    playStartingSound(audio2) {
-        //starting sound
-        this.audio2 = audio2;
-        this.audio2.src = "sounds/marioStart.mp3";
-
-        this.audio2.play();
-    },
-
-    playBackgroundSong(audio, audio2) {
-        //background song
-        this.audio = audio;
-        this.audio.src = "sounds/krt.mp3";
-
-        this.audio.play();
-    },
-
-    audioPause() {
-        this.audio = document.getElementById("backgroundMusic");
-        this.audio2 = document.getElementById("startingSound");
-
-        this.audio.pause();
-        this.audio2.pause();
-    },
-
+    /* LLC
+        playStartingSound(audio2) {
+            //starting sound
+            this.audio2 = audio2;
+            this.audio2.src = "sounds/marioStart.mp3";
+    
+            this.audio2.play();
+        },
+    
+        playBackgroundSong(audio, audio2) {
+            //background song
+            this.audio = audio;
+            this.audio.src = "sounds/krt.mp3";
+    
+            this.audio.play();
+        },
+    
+        audioPause() {
+            this.audio = document.getElementById("backgroundMusic");
+            this.audio2 = document.getElementById("startingSound");
+    
+            this.audio.pause();
+            this.audio2.pause();
+        },
+    LLC */
     drawAll() {
         this.drawBackground();
         this.moveBackground();
@@ -227,41 +228,42 @@ const OrcsApp = {
         //Despues de probar todos los globalCompositeOperation, este es el mejor
         this.ctx.globalCompositeOperation = "destination-over";
     },
-
-    checkIfCollision() {
-        if (this.obstacles.length) {
-            this.obstacles.forEach((elem) => {
-                elem.draw();
-
-                if (
-                    this.newHero.HeroPosition.x <
-                    elem.obstaclePosition.x + elem.obstacleSize.w - 10 &&
-                    this.newHero.HeroPosition.x + this.newHero.HeroSize.w - 10 >
-                    elem.obstaclePosition.x &&
-                    this.newHero.HeroPosition.y <
-                    elem.obstaclePosition.y + elem.obstacleSize.h - 10 &&
-                    this.newHero.HeroSize.h - 10 + this.newHero.HeroPosition.y >
-                    elem.obstaclePosition.y
-                ) {
-                    this.stopGame();
-                }
-            });
-        }
-    },
-
-    stopGame() {
-        //https://www.youtube.com/watch?v=eI9idPTT0c4&ab_channel=ChrisCourses
-        //este recurso ha ido bien para acabar la parte del menú final
-        window.cancelAnimationFrame(this.intervalId);
-        this.endgame.style.display = "initial";
-        this.scoreEnd.innerHTML = this.score;
-
-        //Hacer un refresh
-        this.buttonRestart.setAttribute("onclick", "window.location.reload()");
-
-        //llamamos a parar el audio
-        this.audioPause();
-        //Limpiamos el score ya que lo mostramos por pantalla al finalizar
-        this.stopScore();
-    },
+    /* LLC
+        checkIfCollision() {
+            if (this.obstacles.length) {
+                this.obstacles.forEach((elem) => {
+                    elem.draw();
+    
+                    if (
+                        this.newHero.HeroPosition.x <
+                        elem.obstaclePosition.x + elem.obstacleSize.w - 10 &&
+                        this.newHero.HeroPosition.x + this.newHero.HeroSize.w - 10 >
+                        elem.obstaclePosition.x &&
+                        this.newHero.HeroPosition.y <
+                        elem.obstaclePosition.y + elem.obstacleSize.h - 10 &&
+                        this.newHero.HeroSize.h - 10 + this.newHero.HeroPosition.y >
+                        elem.obstaclePosition.y
+                    ) {
+                        this.stopGame();
+                    }
+                });
+            }
+        },
+    
+        stopGame() {
+            //https://www.youtube.com/watch?v=eI9idPTT0c4&ab_channel=ChrisCourses
+            //este recurso ha ido bien para acabar la parte del menú final
+            window.cancelAnimationFrame(this.intervalId);
+            this.endgame.style.display = "initial";
+            this.scoreEnd.innerHTML = this.score;
+    
+            //Hacer un refresh
+            this.buttonRestart.setAttribute("onclick", "window.location.reload()");
+    
+            //llamamos a parar el audio
+            this.audioPause();
+            //Limpiamos el score ya que lo mostramos por pantalla al finalizar
+            this.stopScore();
+        },
+    LLC*/
 };
