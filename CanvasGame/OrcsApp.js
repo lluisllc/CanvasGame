@@ -11,7 +11,7 @@ const OrcsApp = {
     score: 0,
     y: 0,
 
-    init(canvas, endgame, scoreEnd, buttonRestart, audio, audio2) {
+    init(canvas) {
         this.setContext(canvas);
         this.setCanvasDimensions(canvas);
 
@@ -19,8 +19,8 @@ const OrcsApp = {
         this.imageBackground = new Image();
         this.imageBackground.src = "./campo5.webp";
         // this.endgame = endgame;
-        this.scoreEnd = scoreEnd;
-        this.buttonRestart = buttonRestart;
+        //this.scoreEnd = scoreEnd;
+        //this.buttonRestart = buttonRestart;
         this.createNewHero();
 
         /* LLC
@@ -43,8 +43,6 @@ const OrcsApp = {
     setContext(canvas) {
         this.ctx = canvas.getContext("2d");
         this.ctx.globalCompositeOperation = "source-over";
-        this.ctx2 = canvas.getContext("2d");
-        this.ctx2.globalCompositeOperation = "destination-out";
     },
 
     setCanvasDimensions(canvas) {
@@ -62,6 +60,7 @@ const OrcsApp = {
     setListeners() {
         //condicion ternaria, despues del interrogante es el true, despues de los 2 puntos es el false
         document.addEventListener("keydown", (e) => {
+            console.log(e)
             e.key === "ArrowUp" ? (this.newHero.moveUp = true) : null;
             e.key === "ArrowDown" ? (this.newHero.moveDown = true) : null;
             //e.key === "ArrowLeft" ? (this.newHero.moveLeft = true) : null;
@@ -72,6 +71,7 @@ const OrcsApp = {
             //e.code === "KeyD" ? (this.newHero.moveRightGamer = true) : null;
         });
         //condicion ternaria, despues del interrogante es el true, despues de los 2 puntos es el false
+
         document.addEventListener("keyup", (e) => {
             e.key === "ArrowUp" ? (this.newHero.moveUp = false) : null;
             e.key === "ArrowDown" ? (this.newHero.moveDown = false) : null;
@@ -82,6 +82,7 @@ const OrcsApp = {
             //e.code === "KeyA" ? (this.newHero.moveLeftGamer = false) : null;
             // e.code === "KeyD" ? (this.newHero.moveRightGamer = false) : null;
         });
+
     },
 
     //refrescamos screen
@@ -90,9 +91,10 @@ const OrcsApp = {
 
         //ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        this.checkIfCollision();
+        //this.checkIfCollision();
         this.clearCanvas();
         this.drawAll();
+
 
         //Pantalla final ending
         //this.showEndingScreen();
@@ -100,14 +102,16 @@ const OrcsApp = {
         //pintamos coche moviendose
         this.newHero.move();
 
-        this.framesCounter++;
+        //this.framesCounter++;
 
+    },
+    /* LLC
         if (this.framesCounter % 100 === 0) {
             this.createObstacle();
             //this.createAnimal();
         }
     },
-    /* LLC
+ 
         playStartingSound(audio2) {
             //starting sound
             this.audio2 = audio2;
@@ -132,37 +136,39 @@ const OrcsApp = {
             this.audio2.pause();
         },
     LLC */
+
     drawAll() {
         this.drawBackground();
-        this.moveBackground();
+        //this.moveBackground();
         this.newHero.drawHero();
 
-        this.obstacles.forEach((obstacle) => obstacle.draw());
+        //this.obstacles.forEach((obstacle) => obstacle.draw());
         //this.animals.forEach((animal) => animal.draw());
 
         this.showScores();
     },
-
-    createObstacle() {
-        //const randomWidth = Math.trunc(Math.random() * (300 - 100) + 100);
-        //const randomHeight = Math.trunc(Math.random() * (100 - 70) + 70);
-        const randomWidth = 80;
-        const randomHeight = 100;
-        const xRandomPosition = Math.trunc(
-            Math.random() * (this.canvasSize.w - 100)
-        );
-
-        const newObstacle = new obstacles(
-            this.ctx,
-            randomWidth,
-            randomHeight,
-            this.canvasSize,
-            xRandomPosition,
-            this.speed
-        );
-
-        this.obstacles.push(newObstacle);
-    },
+    /* LLC
+        createObstacle() {
+            //const randomWidth = Math.trunc(Math.random() * (300 - 100) + 100);
+            //const randomHeight = Math.trunc(Math.random() * (100 - 70) + 70);
+            const randomWidth = 80;
+            const randomHeight = 100;
+            const xRandomPosition = Math.trunc(
+                Math.random() * (this.canvasSize.w - 100)
+            );
+    
+            const newObstacle = new obstacles(
+                this.ctx,
+                randomWidth,
+                randomHeight,
+                this.canvasSize,
+                xRandomPosition,
+                this.speed
+            );
+    
+            this.obstacles.push(newObstacle);
+        },
+    LCC  */
 
     // createAnimal() {
     // 	//const randomWidth = Math.trunc(Math.random() * (300 - 100) + 100);
@@ -205,12 +211,12 @@ const OrcsApp = {
             );
         }
     },
-
-    moveBackground() {
-        this.y += this.speed;
-        this.y %= this.canvasSize.h;
-    },
-
+    /*
+        moveBackground() {
+            this.y += this.speed;
+            this.y %= this.canvasSize.h;
+        },
+    */
     clearCanvas() {
         this.ctx.clearRect(0, 0, this.canvasSize.w, this.canvasSize.h);
     },
@@ -218,7 +224,7 @@ const OrcsApp = {
     showScores() {
         // show scores
         this.ctx.font = "35px Verdana";
-        this.ctx.fillStyle = "red";
+        this.ctx.fillStyle = "black";
         this.ctx.fillText("Score: " + this.score++, 50, 90);
     },
 
@@ -266,4 +272,5 @@ const OrcsApp = {
             this.stopScore();
         },
     LLC*/
-};
+}
+

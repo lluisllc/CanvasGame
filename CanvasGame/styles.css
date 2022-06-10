@@ -27,6 +27,12 @@ body {
     box-shadow: 10px 5px 3px black;
     border-radius: 25px;
   }
+
+  #canvas {
+    border: 1px solid red;
+    width: 900px;
+    height: 600px;
+  }
   
   .controls{
     font-size: 21px;

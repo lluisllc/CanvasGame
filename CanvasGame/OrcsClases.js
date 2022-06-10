@@ -26,8 +26,8 @@ class Hero {
         this.canvasSize = canvasSize;
         this.image = undefined;
         this.heroPosition = {
-            x: this.canvasSize.w / 2 - 50,
-            y: this.canvasSize.h - 140,
+            x: this.canvasSize.w / 2 - 280, //220
+            y: this.canvasSize.h - 140,   //460
         };
         this.moveLeft = false;
         this.moveRight = false;
@@ -52,8 +52,8 @@ class Hero {
     }
     move() {
         //solo necesitamos movimiento vertical
-        (this.heroPosition.y <= this.canvasSize.h - 130 && this.moveDown) ||
-            (this.heroPosition.y <= this.canvasSize.h - 130 && this.moveDownGamer)
+        (this.heroPosition.y <= this.canvasSize.h && this.moveDown) ||
+            (this.heroPosition.y <= this.canvasSize.h && this.moveDownGamer)
             ? (this.heroPosition.y += 4)
             : null;
         (this.heroPosition.y >= 30 && this.moveUp) ||
