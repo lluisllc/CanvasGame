@@ -3,6 +3,7 @@ const App = {
     canvasSize: { w: undefined, h: undefined },
     intervalId: undefined,
     framesCounter: 0,
+    enemigos: [],
     speed: 1,
     score: 0,
     y: 0,
@@ -38,7 +39,6 @@ const App = {
 
     setListeners() {
         document.addEventListener("keydown", (e) => {
-            console.log(e)
             e.key === "ArrowUp" ? (this.newHero.moveUp = true) : null;
             e.key === "ArrowDown" ? (this.newHero.moveDown = true) : null;
 
@@ -71,8 +71,26 @@ const App = {
         this.framesCounter++;
 
         if (this.framesCounter % 100 === 0) {
-            this.newOrc = new Orc(this.ctx, 80, 100, this.canvasSize)
+            this.newOrcEnemy();
         }
+
+    },
+    newOrcEnemy() {
+        const randomWidth = 80;
+        const randomHeight = 100;
+        const xRandomPosition = Math.trunc(Math.random() * (this.canvasSize.w - 100));
+
+        const newOrcEnemy = new Orc(
+            this.ctx,
+            randomWidth,
+            randomHeight,
+            this.canvasSize,
+            xRandomPosition,
+            this.speed
+        );
+
+        this.enemigos.push(newOrcEnemy);
+
 
     },
 
@@ -80,7 +98,9 @@ const App = {
         this.drawBackground();
         //this.moveBackground();
         this.newHero.drawHero();
-        //this.newOrc.drawOrc();
+        this.enemigos.forEach((element) => {
+            element.drawOrc()
+        })
         //this.obstacles.forEach((obstacle) => obstacle.draw());
         //this.animals.forEach((animal) => animal.draw());
         this.showScores();
