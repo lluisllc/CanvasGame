@@ -12,7 +12,10 @@ let enemigoImagen = new Image();
 enemigoImagen.src = "./Orc 6.png"
 
 enemigoImagen.onload = function () {
-    ctx.drawImage(enemigoImagen, 320, 50, 180, 180);
+    ctx.drawImage(enemigoImagen, 850, 30, 170, 170);
+    //  X= 320 Y = 30 First row
+    // Punto de colision X = 180
+    // Spawn enemies  X = 900
 
     enemigoImagen.onload = function () {
         ctx.drawImage(enemigoImagen, 320, 150, 120, 150);
