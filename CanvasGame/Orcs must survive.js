@@ -1,5 +1,6 @@
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
+body = document.body;
 
 let heroImagen = new Image();
 heroImagen.src = "./Goblin ghost.png"
@@ -13,10 +14,80 @@ enemigoImagen.src = "./Orc 6.png"
 
 enemigoImagen.onload = function () {
     ctx.drawImage(enemigoImagen, 850, 30, 170, 170);
+}
+
+
+
+
+let shooter = {
+    y: canvas.height / 2 - 25,
+    height: 50,
+    width: 20,
+    // Pressed keys will be stored here
+    pressed_keys: [],
+    shots: [],
+
+    draw_shooter() {
+        ctx.strokeRect(5, this.y, this.width, this.height);
+    },
+
+    move_shooter() {
+        const up = this.pressed_keys.includes("ArrowUp"),
+            down = this.pressed_keys.includes("ArrowDown");
+        // If both keys are pressed, do nothing
+        if (up && down) { return; }
+        if (up) { this.y = Math.max(0, this.y - 2); }
+        if (down) { this.y = Math.min(canvas.height, this.y + 2); }
+    },
+
+    // Add key to the Array
+    on_key_down(e) {
+        this.pressed_keys.push(e.code);
+    },
+
+    // Remove key from the Array
+    on_key_up(e) {
+        this.pressed_keys = this.pressed_keys.filter(k => k !== e.code);
+    },
+
+    shoot() {
+        let shot = {
+            x: 30,
+            y: this.y + 20,
+            draw() {
+                //check if more, then kill in array
+                ctx.strokeRect(this.x, this.y, 20, 10);
+                this.x += 5;
+            }
+        }
+        this.shots.push(shot);
+    }
+}
+
+function update() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    shooter.draw_shooter();
+    shooter.shots.map((shot) => shot.draw());
+    // Move shooter
+    shooter.move_shooter();
+    requestAnimationFrame(update);
+}
+
+update();
+
+body.addEventListener(`keydown`, (e) => shooter.on_key_down(e));
+body.addEventListener(`keyup`, (e) => shooter.on_key_up(e));
+body.addEventListener(`keypress`, (e) => shooter.shoot(e));
+
+
+
+
+
     //  X= 320 Y = 30 First row
     // Punto de colision X = 180
     // Spawn enemies  X = 900
 
+/* Intento de muchos enemigos 
     enemigoImagen.onload = function () {
         ctx.drawImage(enemigoImagen, 320, 150, 120, 150);
 
