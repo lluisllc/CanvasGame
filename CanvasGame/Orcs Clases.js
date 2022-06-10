@@ -2,11 +2,13 @@ const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
 body = document.body;
 
-let heroImagen = new Image();
-heroImagen.src = "./Goblin ghost.png"
+/*
+let shooterImagen = new Image();
+shooterImagen.src = "./Goblin ghost.png"
 
-heroImagen.onload = function () {
-    ctx.drawImage(heroImagen, 140, 50, 160, 160);
+
+shooterImagen.onload = function () {
+    ctx.drawImage(shooterImagen, 140, 50, 160, 160);
 }
 
 let enemigoImagen = new Image();
@@ -15,10 +17,53 @@ enemigoImagen.src = "./Orc 6.png"
 enemigoImagen.onload = function () {
     ctx.drawImage(enemigoImagen, 850, 30, 170, 170);
 }
+*/
 
+class Hero {
+    constructor(ctx, width, height, canvasSize) {
+        this.ctx = ctx;
+        this.heroSize = { w: width, h: height };
+        this.canvasSize = canvasSize;
+        this.image = undefined;
+        this.heroPosition = {
+            x: this.canvasSize.w / 2 - 50,
+            y: this.canvasSize.h - 140,
+        };
+        this.moveLeft = false;
+        this.moveRight = false;
+        this.moveUp = false;
+        this.moveDown = false;
+        this.moveLeftGamer = false;
+        this.moveRightGamer = false;
+        this.moveUpGamer = false;
+        this.moveDownGamer = false;
+        this.image = new Image();
+        this.image.src = `./Goblin ghost.png`;
+    }
+    drawHero() {
+        //Primer parametro Image, posicion X, posicion Y, dimension coche W, dimension coche H
+        this.ctx.drawImage(
+            this.image,
+            this.heroPosition.x,
+            this.heroPosition.y,
+            this.heroSize.w,
+            this.heroSize.h
+        );
+    }
+    move() {
+        //solo necesitamos movimiento vertical
+        (this.heroPosition.y <= this.canvasSize.h - 130 && this.moveDown) ||
+            (this.heroPosition.y <= this.canvasSize.h - 130 && this.moveDownGamer)
+            ? (this.heroPosition.y += 4)
+            : null;
+        (this.heroPosition.y >= 30 && this.moveUp) ||
+            (this.heroPosition.y >= 30 && this.moveUpGamer)
+            ? (this.heroPosition.y -= 4)
+            : null;
+    }
+}
 
-
-
+/*
 let shooter = {
     y: canvas.height / 2 - 25,
     height: 50,
@@ -28,7 +73,7 @@ let shooter = {
     shots: [],
 
     draw_shooter() {
-        ctx.strokeRect(5, this.y, this.width, this.height);
+        ctx.drawImage(shooterImagen, 140, 50, 160, 160);
     },
 
     move_shooter() {
