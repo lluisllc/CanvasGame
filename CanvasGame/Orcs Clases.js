@@ -1,8 +1,8 @@
+/*
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
 body = document.body;
 
-/*
 let shooterImagen = new Image();
 shooterImagen.src = "./Goblin ghost.png"
 
@@ -123,10 +123,6 @@ update();
 body.addEventListener(`keydown`, (e) => shooter.on_key_down(e));
 body.addEventListener(`keyup`, (e) => shooter.on_key_up(e));
 body.addEventListener(`keypress`, (e) => shooter.shoot(e));
-
-
-
-
 
     //  X= 320 Y = 30 First row
     // Punto de colision X = 180

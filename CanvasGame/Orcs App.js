@@ -1,4 +1,4 @@
-/*
+
 const OrcsApp = {
     ctx: undefined,
     // canvasDOM: undefined,
@@ -17,15 +17,15 @@ const OrcsApp = {
 
         this.playStartingSound(audio2);
         this.imageBackground = new Image();
-        this.imageBackground.src = "images/road.png";
+        this.imageBackground.src = "./campo5.webp";
         this.endgame = endgame;
         this.scoreEnd = scoreEnd;
         this.buttonRestart = buttonRestart;
-        this.createNewCar();
+        this.createNewHero();
 
         //block eventlisteners in menu while playing, we just add a class with all that we need to prevent it
-        const gameMenuCar = document.getElementById("gameMenu");
-        gameMenuCar.classList.add("noPointers");
+        const gameMenuHero = document.getElementById("gameMenu");
+        gameMenuHero.classList.add("noPointers");
 
         setTimeout(() => {
             this.playBackgroundSong(audio, audio2);
@@ -47,39 +47,39 @@ const OrcsApp = {
     },
 
     setCanvasDimensions(canvas) {
-        this.canvasSize.w = 500;
-        this.canvasSize.h = 700;
+        this.canvasSize.w = 900;
+        this.canvasSize.h = 600;
         canvas.setAttribute("width", this.canvasSize.w);
         canvas.setAttribute("height", this.canvasSize.h);
     },
 
-    createNewCar() {
-        //creamos objeto coche
-        this.newCar = new Car(this.ctx, 80, 100, this.canvasSize);
+    createNewHero() {
+        //creamos objeto Hero
+        this.newHero = new Hero(this.ctx, 80, 100, this.canvasSize);
     },
 
     setListeners() {
         //condicion ternaria, despues del interrogante es el true, despues de los 2 puntos es el false
         document.addEventListener("keydown", (e) => {
-            e.key === "ArrowUp" ? (this.newCar.moveUp = true) : null;
-            e.key === "ArrowDown" ? (this.newCar.moveDown = true) : null;
-            e.key === "ArrowLeft" ? (this.newCar.moveLeft = true) : null;
-            e.key === "ArrowRight" ? (this.newCar.moveRight = true) : null;
-            e.code === "KeyW" ? (this.newCar.moveUpGamer = true) : null;
-            e.code === "KeyS" ? (this.newCar.moveDownGamer = true) : null;
-            e.code === "KeyA" ? (this.newCar.moveLeftGamer = true) : null;
-            e.code === "KeyD" ? (this.newCar.moveRightGamer = true) : null;
+            e.key === "ArrowUp" ? (this.newHero.moveUp = true) : null;
+            e.key === "ArrowDown" ? (this.newHero.moveDown = true) : null;
+            e.key === "ArrowLeft" ? (this.newHero.moveLeft = true) : null;
+            e.key === "ArrowRight" ? (this.newHero.moveRight = true) : null;
+            e.code === "KeyW" ? (this.newHero.moveUpGamer = true) : null;
+            e.code === "KeyS" ? (this.newHero.moveDownGamer = true) : null;
+            e.code === "KeyA" ? (this.newHero.moveLeftGamer = true) : null;
+            e.code === "KeyD" ? (this.newHero.moveRightGamer = true) : null;
         });
         //condicion ternaria, despues del interrogante es el true, despues de los 2 puntos es el false
         document.addEventListener("keyup", (e) => {
-            e.key === "ArrowUp" ? (this.newCar.moveUp = false) : null;
-            e.key === "ArrowDown" ? (this.newCar.moveDown = false) : null;
-            e.key === "ArrowLeft" ? (this.newCar.moveLeft = false) : null;
-            e.key === "ArrowRight" ? (this.newCar.moveRight = false) : null;
-            e.code === "KeyW" ? (this.newCar.moveUpGamer = false) : null;
-            e.code === "KeyS" ? (this.newCar.moveDownGamer = false) : null;
-            e.code === "KeyA" ? (this.newCar.moveLeftGamer = false) : null;
-            e.code === "KeyD" ? (this.newCar.moveRightGamer = false) : null;
+            e.key === "ArrowUp" ? (this.newHero.moveUp = false) : null;
+            e.key === "ArrowDown" ? (this.newHero.moveDown = false) : null;
+            e.key === "ArrowLeft" ? (this.newHero.moveLeft = false) : null;
+            e.key === "ArrowRight" ? (this.newHero.moveRight = false) : null;
+            e.code === "KeyW" ? (this.newHero.moveUpGamer = false) : null;
+            e.code === "KeyS" ? (this.newHero.moveDownGamer = false) : null;
+            e.code === "KeyA" ? (this.newHero.moveLeftGamer = false) : null;
+            e.code === "KeyD" ? (this.newHero.moveRightGamer = false) : null;
         });
     },
 
@@ -97,7 +97,7 @@ const OrcsApp = {
         //this.showEndingScreen();
 
         //pintamos coche moviendose
-        this.newCar.move();
+        this.newHero.move();
 
         this.framesCounter++;
 
@@ -134,7 +134,7 @@ const OrcsApp = {
     drawAll() {
         this.drawBackground();
         this.moveBackground();
-        this.newCar.drawCar();
+        this.newHero.drawHero();
 
         this.obstacles.forEach((obstacle) => obstacle.draw());
         //this.animals.forEach((animal) => animal.draw());
@@ -234,13 +234,13 @@ const OrcsApp = {
                 elem.draw();
 
                 if (
-                    this.newCar.carPosition.x <
+                    this.newHero.HeroPosition.x <
                     elem.obstaclePosition.x + elem.obstacleSize.w - 10 &&
-                    this.newCar.carPosition.x + this.newCar.carSize.w - 10 >
+                    this.newHero.HeroPosition.x + this.newHero.HeroSize.w - 10 >
                     elem.obstaclePosition.x &&
-                    this.newCar.carPosition.y <
+                    this.newHero.HeroPosition.y <
                     elem.obstaclePosition.y + elem.obstacleSize.h - 10 &&
-                    this.newCar.carSize.h - 10 + this.newCar.carPosition.y >
+                    this.newHero.HeroSize.h - 10 + this.newHero.HeroPosition.y >
                     elem.obstaclePosition.y
                 ) {
                     this.stopGame();
@@ -265,4 +265,3 @@ const OrcsApp = {
         this.stopScore();
     },
 };
-*/
