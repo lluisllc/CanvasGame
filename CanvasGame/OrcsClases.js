@@ -1,24 +1,3 @@
-/*
-const canvas = document.querySelector("#canvas");
-const ctx = canvas.getContext("2d");
-body = document.body;
-
-let shooterImagen = new Image();
-shooterImagen.src = "./Goblin ghost.png"
-
-
-shooterImagen.onload = function () {
-    ctx.drawImage(shooterImagen, 140, 50, 160, 160);
-}
-
-let enemigoImagen = new Image();
-enemigoImagen.src = "./Orc 6.png"
-
-enemigoImagen.onload = function () {
-    ctx.drawImage(enemigoImagen, 850, 30, 170, 170);
-}
-*/
-
 class Hero {
     constructor(ctx, width, height, canvasSize) {
         this.ctx = ctx;
@@ -62,6 +41,38 @@ class Hero {
             : null;
     }
 }
+
+class Orc {
+    constructor(ctx, width, height, canvasSize, position, speed) {
+        this.ctx = ctx;
+        this.orcSize = { w: width, h: height };
+        this.canvasSize = canvasSize;
+        this.orcPosition = { x: position, y: -100 };
+        this.image = undefined;
+        //this.randomImage = Math.trunc(Math.random() * (4 - 1) + 1);
+        this.speed = speed;
+        // this.imageInstance = new Image();
+        // this.imageInstance.src = `images/rotatedCars/car${this.randomImage}.png`;
+        this.image = new Image();
+        this.image.src = `../IMGMarc/Orc 6.png`
+    }
+
+    drawOrc() {
+        this.ctx.drawImage(
+            this.imageInstance,
+            this.orcPosition.x,
+            this.orcPosition.y,
+            this.orcSize.w,
+            this.orcSize.h
+        );
+        this.move();
+    }
+
+    move() {
+        this.orcPosition.x += this.speed;
+    }
+}
+
 
 /*
 let shooter = {

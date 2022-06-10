@@ -12,7 +12,7 @@ window.onload = () => {
         //const audio2 = document.getElementById("startingSound");
 
 
-        OrcsApp.init(
+        App.init(
             canvas
             //endGame,
             //scoreEndGame,
