@@ -17,7 +17,7 @@ const OrcsApp = {
 
         // this.playStartingSound(audio2);
         this.imageBackground = new Image();
-        this.imageBackground.src = "./campo5.webp";
+        this.imageBackground.src = "../IMGMarc/campo5.webp";
         // this.endgame = endgame;
         //this.scoreEnd = scoreEnd;
         //this.buttonRestart = buttonRestart;
@@ -224,7 +224,7 @@ const OrcsApp = {
     showScores() {
         // show scores
         this.ctx.font = "35px Verdana";
-        this.ctx.fillStyle = "black";
+        this.ctx.fillStyle = "blue";
         this.ctx.fillText("Score: " + this.score++, 50, 90);
     },
 

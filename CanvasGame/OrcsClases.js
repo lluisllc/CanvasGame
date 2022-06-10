@@ -38,7 +38,7 @@ class Hero {
         this.moveUpGamer = false;
         this.moveDownGamer = false;
         this.image = new Image();
-        this.image.src = `./Goblin ghost.png`;
+        this.image.src = `../IMGMarc/Goblin ghost.png`
     }
     drawHero() {
         //Primer parametro Image, posicion X, posicion Y, dimension coche W, dimension coche H
