@@ -78,14 +78,15 @@ const App = {
     newOrcEnemy() {
         const randomWidth = 80;
         const randomHeight = 100;
-        const xRandomPosition = Math.trunc(Math.random() * (this.canvasSize.w - 100));
+        const yRandomPosition = Math.trunc(Math.random() * (this.canvasSize.h - 100));
+
 
         const newOrcEnemy = new Orc(
             this.ctx,
             randomWidth,
             randomHeight,
             this.canvasSize,
-            xRandomPosition,
+            yRandomPosition,
             this.speed
         );
 

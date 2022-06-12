@@ -3,7 +3,7 @@ class Orc {
         this.ctx = ctx;
         this.orcSize = { w: width, h: height };
         this.canvasSize = canvasSize;
-        this.orcPosition = { x: position, y: 300 };
+        this.orcPosition = { x: 580, y: position };
         this.image = undefined;
         //this.randomImage = Math.trunc(Math.random() * (4 - 1) + 1);
         this.speed = speed;
