@@ -64,7 +64,7 @@ const App = {
 
         //ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        //this.checkIfCollision();
+        // LLC 12/06 this.checkIfCollision();
         this.clearCanvas();
         this.drawAll();
         this.newHero.move();
@@ -153,4 +153,20 @@ const App = {
         this.ctx.clearRect(0, 0, this.canvasSize.w, this.canvasSize.h);
         this.ctx.globalCompositeOperation = "destination-over";
     },
+    /* LLC 12/06
+        checkIfCollision() {
+            if (this.enemigos.length) {
+                this.enemigos.forEach((elem) => {
+                    elem.drawOrc();
+    
+                    if (
+                        this.orcPosition.x = this.HeroPosition.x
+                    ) {
+                        this.stopGame();
+                    }
+                });
+            }
+        },
+    */
 }
+
