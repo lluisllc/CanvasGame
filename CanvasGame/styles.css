@@ -2,12 +2,17 @@ body {
     padding: 0;
     text-align: center;
   }
-/*
+
+  .intro {
+    max-width: 600px;
+    max-height: 900px;
+  }
+
   .body-background {
-    background-image: url(./images/portada.png);
+    background-color: black;
     background-size: cover;
   }
-  */
+ 
   
   .game-intro {
     display: flex;
@@ -18,10 +23,10 @@ body {
   
   .titulo {
     margin-top: 20px;
-    background: linear-gradient(to bottom right, darkblue, black);
+    background: linear-gradient(to bottom right, brown, black);
     font-size: 100px;
-    width: 600px;
-    color: rgb(92, 117, 105);
+    width: 700px;
+    color: wheat;
     text-shadow: 1em 1em 5em black;
     border: 4px black solid;
     box-shadow: 10px 5px 3px black;
@@ -29,21 +34,27 @@ body {
   }
 
   #canvas {
-    border: 1px solid red;
+    border: 1px solid brown;
     width: 900px;
     height: 600px;
   }
   
   .controls{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 21px;
     color: wheat;
   }
   
   #start-button {
+    background: linear-gradient(to bottom right, brown, black);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: 1em 1em 5em black;
+    border: 4px black solid;
+    box-shadow: 10px 5px 3px black;
+    border-radius: 25px;
     font-size: 30px;
     width: 220px;
     height: 75px;
-    color: brown;
-    background-color: black;
+    color: wheat;
+    background-color: brown;
   }

@@ -5,8 +5,22 @@
         <meta charset="UTF-8" />
         <link rel="stylesheet" href="./styles.css" />
       </head>
-      <body>
-        <button id="start-button">StartGame</button> 
+      <body class="body-background">
+        <div class="game-intro">
+          <h1 class="titulo">Orcs must die 4</h1>
+          <img src="../IMGMarc/Fondo inicial.jpeg" alt="" class="intro" />
+          <div class="controls">
+            <p>
+              They took everything from him... even his life. He came back to take revenge!
+            </p>
+            <p>
+              You move with <b>''ARROWUP''</b> or<b> ''W'' </b>and <b>''ARROWDOWN'' or <b>''S''</b> </b>.<br><br> To shoot the minigun: <b>''SPACEBAR''</b>
+            </p>
+          </div>
+          <br />
+          <button id="start-button">StartGame</button>
+        </div>
+        
         <canvas id="canvas"></canvas> 
         <script src="App.js"></script>
         <script src="HeroClass.js"></script>
