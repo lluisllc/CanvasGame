@@ -7,7 +7,7 @@ class Bala {
     }
 
     //Dibujamos bala
-    draw() {
+    drawBullet() {
         //console.log("estamos aquí?");
         this.ctx.save();
         this.ctx.fillStyle = "aquamarine";
