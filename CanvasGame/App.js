@@ -230,7 +230,7 @@ const App = {
                         balas.bulletPosition.x > enemigos.orcPosition.x &&
                         balas.bulletPosition.x < enemigos.orcPosition.x + 50 &&
                         balas.bulletPosition.y > enemigos.orcPosition.y &&
-                        balas.bulletPosition.y < enemigos.orcPosition.y + 50
+                        balas.bulletPosition.y < enemigos.orcPosition.y + 100
                     ) {
                         //console.log("boom");
                         this.enemigos[i] = null;
