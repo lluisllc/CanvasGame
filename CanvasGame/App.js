@@ -49,18 +49,11 @@ const App = {
             e.code === "KeyW" ? (this.newHero.moveUpGamer = true) : null;
             e.code === "KeyS" ? (this.newHero.moveDownGamer = true) : null;
 
-            /*
-             e.code === "Space"
-                 ? this.balas.push(
-                     (this.newBala = new Bala(
-                         this.ctx,
-                         this.newBullet.returnMoveX(),
-                         this.newBullet.returnMoveY(),
-                         10
-                     ))
-                 )
-                 : null;
-  */
+
+            e.code === "Space"
+                ? this.newBullet() && console.log('Hola')
+                : null;
+
         });
 
 
@@ -113,16 +106,16 @@ const App = {
             this.newOrcEnemy();
         }
 
-        if (this.framesCounter % 50 === 0) {
-            this.newBullet();
-        }
+        // if (this.framesCounter % 50 === 0) {
+        //     this.newBullet();
+        // }
 
     },
 
     newBullet() {
         const width = 10;
         const height = 10;
-        const yPosition = Math.trunc(Math.random() * (this.canvasSize.h - 100)); //Debería ser la del Heroe!
+        const yPosition = this.newHero.posicionHero();//Debería ser la del Heroe!
 
         const newBullet = new Bala(
             this.ctx,

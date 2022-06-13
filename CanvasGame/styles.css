@@ -58,3 +58,7 @@ body {
     color: wheat;
     background-color: brown;
   }
+
+  .hidden {
+    display:none;
+  }

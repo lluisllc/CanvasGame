@@ -40,7 +40,31 @@ class Hero {
             ? (this.heroPosition.y -= 4)
             : null;
     }
+    posicionHero(){
+        return this.heroPosition.y;
+    }
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 let shooter = {

@@ -3,7 +3,7 @@ window.onload = () => {
     const placeHolderImage = document.getElementById("placeHolderImg");
     placeHolderImg.style.display = "initial";
 */
-    //document.getElementById("canvas").hidden()
+
 
     document.getElementById("start-button").onclick = () => {
         const canvas = document.querySelector("#canvas");
@@ -12,6 +12,7 @@ window.onload = () => {
         //const restartButton = document.getElementById("restartButton");
         //const audio = document.getElementById("backgroundMusic");
         //const audio2 = document.getElementById("startingSound");
+        canvas.classList.remove("hidden");
 
 
         App.init(
