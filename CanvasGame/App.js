@@ -38,7 +38,7 @@ const App = {
     },
 
     createNewHero() {
-        this.newHero = new Hero(this.ctx, 80, 100, this.canvasSize);
+        this.newHero = new Hero(this.ctx, 90, 100, this.canvasSize);
     },
 
     setListeners() {
@@ -51,9 +51,7 @@ const App = {
 
 
             e.code === "Space"
-                ? this.newBullet() && console.log('Hola')
-                : null;
-
+                ? this.newBullet() : null;
         });
 
 
@@ -115,7 +113,7 @@ const App = {
     newBullet() {
         const width = 10;
         const height = 10;
-        const yPosition = this.newHero.posicionHero();//Debería ser la del Heroe!
+        const yPosition = this.newHero.positionHero() + 20;//Debería ser la del Heroe!
 
         const newBullet = new Bala(
             this.ctx,

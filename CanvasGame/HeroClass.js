@@ -40,7 +40,7 @@ class Hero {
             ? (this.heroPosition.y -= 4)
             : null;
     }
-    posicionHero(){
+    positionHero(){
         return this.heroPosition.y;
     }
 
