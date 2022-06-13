@@ -122,7 +122,7 @@ const App = {
     newBullet() {
         const width = 10;
         const height = 10;
-        const yPosition = heroPosition.y; //Debería ser la del Heroe!
+        const yPosition = Math.trunc(Math.random() * (this.canvasSize.h - 100)); //Debería ser la del Heroe!
 
         const newBullet = new Bala(
             this.ctx,

@@ -3,7 +3,7 @@ class Bala {
         this.ctx = ctx;
         this.bulletSize = { w: width, h: height };
         this.canvasSize = canvasSize;
-        this.bulletPosition = { x: 200, y: position }
+        this.bulletPosition = { x: 170, y: position }
         this.image = undefined;
         //this.randomImage = Math.trunc(Math.random() * (4 - 1) + 1);
         this.speed = speed;
