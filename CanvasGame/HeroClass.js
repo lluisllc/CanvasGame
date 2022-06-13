@@ -5,7 +5,7 @@ class Hero {
         this.canvasSize = canvasSize;
         this.image = undefined;
         this.heroPosition = {
-            x: this.canvasSize.w / 2 - 280, //220
+            x: this.canvasSize.w / 2 - 280, //170
             y: this.canvasSize.h - 140,   //460
         };
         this.moveLeft = false;
