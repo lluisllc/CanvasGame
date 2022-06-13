@@ -4,9 +4,13 @@ const App = {
     intervalId: undefined,
     framesCounter: 0,
     enemigos: [],
+    balas: [],
     speed: 1,
     score: 0,
     y: 0,
+    //this.heroPosition.x: 170,
+    //this.heroPosition.y:460,
+    newBullet: '',
 
     init(canvas) {
         this.setContext(canvas);
@@ -45,7 +49,20 @@ const App = {
             e.code === "KeyW" ? (this.newHero.moveUpGamer = true) : null;
             e.code === "KeyS" ? (this.newHero.moveDownGamer = true) : null;
 
+            /*
+             e.code === "Space"
+                 ? this.balas.push(
+                     (this.newBala = new Bala(
+                         this.ctx,
+                         this.newBullet.returnMoveX(),
+                         this.newBullet.returnMoveY(),
+                         10
+                     ))
+                 )
+                 : null;
+  */
         });
+
 
 
         document.addEventListener("keyup", (e) => {
@@ -54,8 +71,21 @@ const App = {
 
             e.code === "KeyW" ? (this.newHero.moveUpGamer = false) : null;
             e.code === "KeyS" ? (this.newHero.moveDownGamer = false) : null;
+            /* LLC
+                        e.code === "SPACEBAR"
+                            ? this.balas.push(
+                                (this.newBala = new Bala(
+                                    this.ctx,
+                                    this.newBullet.returnMoveX(),
+                                    this.newBullet.returnMoveY(),
+                                    10
+                                ))
+                            )
+                            : null;
+            */
 
         });
+
 
     },
 
@@ -67,14 +97,45 @@ const App = {
         // LLC 12/06 this.checkIfCollision();
         this.clearCanvas();
         this.drawAll();
+
         this.newHero.move();
+        /*
+        this.balas.forEach((bala) => {
+            if (bala != null) {
+                bala.drawBullet();
+            }
+        });
+*/
+
         this.framesCounter++;
 
         if (this.framesCounter % 100 === 0) {
             this.newOrcEnemy();
         }
 
+        if (this.framesCounter % 50 === 0) {
+            this.newBullet();
+        }
+
     },
+
+    newBullet() {
+        const width = 10;
+        const height = 10;
+        const yPosition = heroPosition.y; //Debería ser la del Heroe!
+
+        const newBullet = new Bala(
+            this.ctx,
+            width,
+            height,
+            this.canvasSize,
+            yPosition,
+            this.speed
+        );
+        this.balas.push(newBullet);
+    },
+
+
     newOrcEnemy() {
         const randomWidth = 80;
         const randomHeight = 100;
@@ -99,6 +160,9 @@ const App = {
         this.drawBackground();
         //this.moveBackground();
         this.newHero.drawHero();
+        this.balas.forEach((element) => {
+            element.drawBullet()
+        })
         this.enemigos.forEach((element) => {
             element.drawOrc()
         })

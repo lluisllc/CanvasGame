@@ -1,23 +1,28 @@
 class Bala {
-    constructor(ctx, x, y, w) {
+    constructor(ctx, width, height, canvasSize, position, speed) {
         this.ctx = ctx;
-        this.x = x;
-        this.y = y;
-        this.w = w;
+        this.bulletSize = { w: width, h: height };
+        this.canvasSize = canvasSize;
+        this.bulletPosition = { x: 200, y: position }
+        this.image = undefined;
+        //this.randomImage = Math.trunc(Math.random() * (4 - 1) + 1);
+        this.speed = speed;
+        this.image = new Image();
+        this.image.src = `../IMGMarc/phantomBullets.png`
     }
 
-    //Dibujamos bala
     drawBullet() {
-        //console.log("estamos aquí?");
-        this.ctx.save();
-        this.ctx.fillStyle = "aquamarine";
-        //Aquí tendríais que posicionar la bala en el eje X o con el width de vuestra nave, coche, lo que sea
-        this.ctx.fillRect(170, this.y, this.w, this.w);
-        this.y = this.y - 1; //velocidad bala
-        this.ctx.restore();
+        this.ctx.drawImage(
+            this.image,
+            this.bulletPosition.x,
+            this.bulletPosition.y,
+            this.bulletSize.w,
+            this.bulletSize.h
+        );
+        this.move();
     }
 
-    balaPositionY() {
-        return this.y;
+    move() {
+        this.bulletPosition.x += this.speed;
     }
 }
