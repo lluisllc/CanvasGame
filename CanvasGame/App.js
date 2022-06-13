@@ -85,11 +85,13 @@ const App = {
 
         //ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // LLC 12/06 this.checkIfCollision();
+        this.checkIfCollision();
         this.clearCanvas();
         this.drawAll();
 
         this.newHero.move();
+        // this.checkBala();
+
         /*
         this.balas.forEach((bala) => {
             if (bala != null) {
@@ -101,7 +103,7 @@ const App = {
         this.framesCounter++;
 
         if (this.framesCounter % 100 === 0) {
-            this.newOrcEnemy();
+            this.newEnemy();
         }
 
         // if (this.framesCounter % 50 === 0) {
@@ -113,7 +115,7 @@ const App = {
     newBullet() {
         const width = 10;
         const height = 10;
-        const yPosition = this.newHero.positionHero() + 20;//Debería ser la del Heroe!
+        const yPosition = this.newHero.positionHeroY() + 20;//Debería ser la del Heroe!
 
         const newBullet = new Bala(
             this.ctx,
@@ -127,7 +129,7 @@ const App = {
     },
 
 
-    newOrcEnemy() {
+    newEnemy() {
         const randomWidth = 80;
         const randomHeight = 100;
         const yRandomPosition = Math.trunc(Math.random() * (this.canvasSize.h - 100));
@@ -152,10 +154,14 @@ const App = {
         //this.moveBackground();
         this.newHero.drawHero();
         this.balas.forEach((element) => {
-            element.drawBullet()
+            if (element != null) {
+                element.drawBullet()
+            }
         })
         this.enemigos.forEach((element) => {
-            element.drawOrc()
+            if (element != null) {
+                element.drawOrc()
+            }
         })
         //this.obstacles.forEach((obstacle) => obstacle.draw());
         //this.animals.forEach((animal) => animal.draw());
@@ -208,20 +214,98 @@ const App = {
         this.ctx.clearRect(0, 0, this.canvasSize.w, this.canvasSize.h);
         this.ctx.globalCompositeOperation = "destination-over";
     },
-    /* LLC 12/06
-        checkIfCollision() {
-            if (this.enemigos.length) {
-                this.enemigos.forEach((elem) => {
-                    elem.drawOrc();
-    
+
+    checkIfCollision() {
+        console.log(this.enemigos);
+        for (let i = 0; i < this.enemigos.length; i++) {
+            //recorre el array enemigos
+            for (let j = 0; j < this.balas.length; j++) {
+                //recorre el array balas
+                enemigos = this.enemigos[i];
+                balas = this.balas[j];
+                //console.log(enemigos);
+                if (enemigos != null && balas != null) {
+                    //preguntamos si es diferente a nulo.
                     if (
-                        this.orcPosition.x = this.HeroPosition.x
+                        balas.bulletPosition.x > enemigos.orcPosition.x &&
+                        balas.bulletPosition.x < enemigos.orcPosition.x + 50 &&
+                        balas.bulletPosition.y > enemigos.orcPosition.y &&
+                        balas.bulletPosition.y < enemigos.orcPosition.y + 50
                     ) {
-                        this.stopGame();
+                        //console.log("boom");
+                        this.enemigos[i] = null;
+                        this.balas[j] = null;
                     }
-                });
+                }
+            }
+        }
+
+        // if (170 < this.newOrcEnemy.positionOrcX() + 80 &&
+        //     170 + 90 > this.newOrcEnemy.positionOrcX() &&
+        //     this.newHero.positionHeroY() < this.newOrcEnemy.positionOrcY() + 100 &&
+        //     100 + this.newHero.positionHeroY() > this.newOrcEnemy.positionOrcY()) {
+        //     console.log('OK')
+        // }
+
+
+
+
+        // if (this.enemigos.length) {
+        //     this.enemigos.forEach((elem) => {
+        //         if (elem != null) {
+        //             elem.drawOrc();
+
+        // if (this.newHero.positionHeroX() === this.newOrcEnemy.positionOrcX()) {
+        //     this.stopGame();
+        // }
+        // this.newHeroPosition.x <
+        // elem.newOrcEnemy.x + elem.orcSize.w - 10 &&
+        // this.newHero.newHeroPosition.x + this.newHero.heroSize.w - 10 >
+        // elem.orcPosition.x)
+        // this.newHero.newHeroPosition.y <
+        // elem.orcPosition.y + elem.orcSize.h - 10 &&
+        // this.newHero.heroSize.h - 10 + this.newHero.heroPosition.y >
+        // elem.orcPosition.y
+        // {
+        //     this.stopGame();
+        // }
+        //             }
+        //         });
+        //     }
+    },
+    /*
+        checkBala() {
+            for (let i = 0; i < this.enemigos.length; i++) {
+                //recorre el array enemigos
+                for (let j = 0; j < this.balas.length; j++) {
+                    //recorre el array balas
+                    enemigos = this.enemigos[i];
+                    balas = this.balas[j];
+                    //console.log(enemigos);
+                    if (enemigos != null && balas != null) {
+                        //preguntamos si es diferente a nulo.
+                        if (balas.x > enemigos.orcPosition.x && balas.x < enemigos.orc.x + 50) {
+                            //   balas.y > enemigos.orcPosition.y &&
+                            //   balas.y < enemigos.orcPosition.y + 50
+    
+                            //console.log("boom");
+                            this.enemigos[i] = null;
+                            this.balas[j] = null;
+                        }
+                    }
+                }
             }
         },
     */
-}
+    stopGame() {
+        window.cancelAnimationFrame(this.intervalId);
+        this.endgame.style.display = "initial";
+        this.scoreEnd.innerHTML = this.score;
 
+        //Hacer un refresh
+        this.buttonRestart.setAttribute("onclick", "window.location.reload()");
+
+        //Limpiamos el score ya que lo mostramos por pantalla al finalizar
+        this.stopScore();
+    },
+}

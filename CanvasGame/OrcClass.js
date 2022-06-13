@@ -27,4 +27,12 @@ class Orc {
     move() {
         this.orcPosition.x -= this.speed;
     }
+
+    positionOrcX() {
+        return this.orcPosition.x;
+    }
+
+    positionOrcY() {
+        return this.orcPosition.y;
+    }
 }

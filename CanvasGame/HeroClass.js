@@ -40,16 +40,13 @@ class Hero {
             ? (this.heroPosition.y -= 4)
             : null;
     }
-    positionHero(){
-        return this.heroPosition.y;
+    positionHeroX() {
+        return this.heroPosition.x;
     }
 
-
-
-
-
-
-
+    positionHeroY() {
+        return this.heroPosition.y;
+    }
 }
 
 
