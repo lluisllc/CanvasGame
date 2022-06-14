@@ -71,6 +71,21 @@ body {
   }
 
   #endScreen {
-    
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:wheat ;
+  }
+
+  #restart-button {
+    background: linear-gradient(to bottom right, brown, black);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: 1em 1em 5em black;
+    border: 4px black solid;
+    box-shadow: 10px 5px 3px black;
+    border-radius: 25px;
+    font-size:20px;
+    width: 200px;
+    height: 50px;
+    color: wheat;
+    background-color: brown;
   }
  
