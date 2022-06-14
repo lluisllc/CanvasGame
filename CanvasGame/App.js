@@ -19,7 +19,7 @@ const App = {
 
         this.imageBackground = new Image();
         this.imageBackground.src = "../IMGMarc/campo5.webp";
-
+      //  this.endgame = endgame;
         this.createNewHero();
         this.setListeners();
         this.refreshScreen();
@@ -163,8 +163,6 @@ const App = {
                 element.drawOrc()
             }
         })
-        //this.obstacles.forEach((obstacle) => obstacle.draw());
-        //this.animals.forEach((animal) => animal.draw());
         this.showScores();
     },
 
@@ -216,7 +214,6 @@ const App = {
     },
 
     checkIfCollision() {
-        console.log(this.enemigos);
         for (let i = 0; i < this.enemigos.length; i++) {
             //recorre el array enemigos
             for (let j = 0; j < this.balas.length; j++) {
@@ -239,40 +236,51 @@ const App = {
                 }
             }
         }
-
-        // if (170 < this.newOrcEnemy.positionOrcX() + 80 &&
-        //     170 + 90 > this.newOrcEnemy.positionOrcX() &&
-        //     this.newHero.positionHeroY() < this.newOrcEnemy.positionOrcY() + 100 &&
-        //     100 + this.newHero.positionHeroY() > this.newOrcEnemy.positionOrcY()) {
-        //     console.log('OK')
-        // }
-
-
-
-
-        // if (this.enemigos.length) {
-        //     this.enemigos.forEach((elem) => {
-        //         if (elem != null) {
-        //             elem.drawOrc();
-
-        // if (this.newHero.positionHeroX() === this.newOrcEnemy.positionOrcX()) {
-        //     this.stopGame();
-        // }
-        // this.newHeroPosition.x <
-        // elem.newOrcEnemy.x + elem.orcSize.w - 10 &&
-        // this.newHero.newHeroPosition.x + this.newHero.heroSize.w - 10 >
-        // elem.orcPosition.x)
-        // this.newHero.newHeroPosition.y <
-        // elem.orcPosition.y + elem.orcSize.h - 10 &&
-        // this.newHero.heroSize.h - 10 + this.newHero.heroPosition.y >
-        // elem.orcPosition.y
-        // {
-        //     this.stopGame();
-        // }
-        //             }
-        //         });
-        //     }
+        for (let i = 0; i < this.enemigos.length; i++) {
+            enemigos = this.enemigos[i];
+            if (enemigos != null) {
+                if (
+                    this.newHero.positionHeroX() === enemigos.orcPosition.x
+                ) {
+                    this.stopGame()
+                }
+            }
+        }
     },
+
+
+
+
+
+    // if (170 < this.newOrcEnemy.positionOrcX() + 80 &&
+    //     170 + 90 > this.newOrcEnemy.positionOrcX() &&
+    //     this.newHero.positionHeroY() < this.newOrcEnemy.positionOrcY() + 100 &&
+    //     100 + this.newHero.positionHeroY() > this.newOrcEnemy.positionOrcY()) {
+    //     console.log('OK')
+    // }
+    // if (this.enemigos.length) {
+    //     this.enemigos.forEach((elem) => {
+    //         if (elem != null) {
+    //             elem.drawOrc();
+
+    // if (this.newHero.positionHeroX() === this.newOrcEnemy.positionOrcX()) {
+    //     this.stopGame();
+    // }
+    // this.newHeroPosition.x <
+    // elem.newOrcEnemy.x + elem.orcSize.w - 10 &&
+    // this.newHero.newHeroPosition.x + this.newHero.heroSize.w - 10 >
+    // elem.orcPosition.x)
+    // this.newHero.newHeroPosition.y <
+    // elem.orcPosition.y + elem.orcSize.h - 10 &&
+    // this.newHero.heroSize.h - 10 + this.newHero.heroPosition.y >
+    // elem.orcPosition.y
+    // {
+    //     this.stopGame();
+    // }
+    //             }
+    //         });
+    //     }
+
     /*
         checkBala() {
             for (let i = 0; i < this.enemigos.length; i++) {

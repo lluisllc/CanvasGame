@@ -8,6 +8,7 @@ body {
     max-height: 550px;
   }
 
+
   .body-background {
     background-color: black;
     background-size: cover;
@@ -67,4 +68,9 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 36px;
     color: wheat;
+  }
+
+  .gameOver {
+width: 900px;
+height: 600px;
   }
