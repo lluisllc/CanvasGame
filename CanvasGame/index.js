@@ -7,8 +7,8 @@ window.onload = () => {
 
     document.getElementById("start-button").onclick = () => {
         const canvas = document.querySelector("#canvas");
-        const endGame = document.getElementById("endScreen");
-        endGame.classList.remove("hidden");
+        // const endGame = document.getElementById("endScreen");
+        // endGame.classList.remove("hidden");
         //const scoreEndGame = document.getElementById("score");
         //const restartButton = document.getElementById("restartButton");
         //const audio = document.getElementById("backgroundMusic");
@@ -18,7 +18,7 @@ window.onload = () => {
 
         App.init(
             canvas,
-            endGame,
+            //endGame
             //scoreEndGame,
             //restartButton,
             //audio,

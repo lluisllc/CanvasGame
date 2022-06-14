@@ -19,7 +19,7 @@ const App = {
 
         this.imageBackground = new Image();
         this.imageBackground.src = "../IMGMarc/campo5.webp";
-      //  this.endgame = endgame;
+        //  this.endgame = endgame;
         this.createNewHero();
         this.setListeners();
         this.refreshScreen();
@@ -243,6 +243,7 @@ const App = {
                     this.newHero.positionHeroX() === enemigos.orcPosition.x
                 ) {
                     this.stopGame()
+
                 }
             }
         }
@@ -307,13 +308,22 @@ const App = {
     */
     stopGame() {
         window.cancelAnimationFrame(this.intervalId);
-        this.endgame.style.display = "initial";
-        this.scoreEnd.innerHTML = this.score;
+
+        const endGame = document.getElementById("endScreen");
+        endGame.classList.remove("hidden");
+
+        const canvas = document.querySelector("#canvas");
+        canvas.classList.add("hidden");
+
+        const totalScore = document.getElementById("totalScore");
+        totalScore.innerHTML = this.score;
+
 
         //Hacer un refresh
-        this.buttonRestart.setAttribute("onclick", "window.location.reload()");
+        const buttonRestart = document.querySelector("#restart-button");
+        buttonRestart.setAttribute("onclick", "window.location.reload()");
 
         //Limpiamos el score ya que lo mostramos por pantalla al finalizar
-        this.stopScore();
+        //this.stopScore();
     },
 }
