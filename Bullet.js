@@ -8,7 +8,7 @@ class Bala {
         //this.randomImage = Math.trunc(Math.random() * (4 - 1) + 1);
         this.speed = speed;
         this.image = new Image();
-        this.image.src = `../IMGMarc/phantomBullets.png`
+        this.image.src = `./IMGMarc/phantomBullets.png`
     }
 
     drawBullet() {

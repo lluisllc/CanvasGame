@@ -10,7 +10,7 @@ class Orc {
         //this.imageInstance = new Image();
         // this.imageInstance.src = `images/rotatedCars/car${this.randomImage}.png`;
         this.image = new Image();
-        this.image.src = `../IMGMarc/Orc 6.png`
+        this.image.src = `./IMGMarc/Orc 6.png`
     }
 
     drawOrc() {
