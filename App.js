@@ -93,7 +93,7 @@ const App = {
 
         this.framesCounter++;
 
-        if (this.framesCounter % 100 === 0) {
+        if (this.framesCounter % 50 === 0) {
             this.newEnemy();
         }
 
