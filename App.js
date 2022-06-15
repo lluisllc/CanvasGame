@@ -13,6 +13,7 @@ const App = {
     newBullet: '',
     audio1: document.getElementById("audio1"),
     audio2: document.getElementById("audio2"),
+    audio3: document.getElementById("audio3"),
 
     init(canvas) {
         this.setContext(canvas);
@@ -255,6 +256,8 @@ const App = {
                     this.newHero.positionHeroX() === enemigos.orcPosition.x
                 ) {
                     this.stopGame()
+                    audio3.volume = 0.1;
+                    audio3.play();
 
 
                 }
