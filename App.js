@@ -99,30 +99,6 @@ const App = {
 
     },
 
-    // playStartingSound(audio2) {
-    //     //starting sound
-    //     this.audio2 = audio2;
-    //     this.audio2.src = "./Sound/startGame.mp3";
-
-    //     this.audio2.play();
-    // },
-
-    // playBackgroundSong(audio, audio2) {
-    //     //background song
-    //     this.audio = audio;
-    //     this.audio.src = "./Sound/defeat.mp3";
-
-    //     this.audio.play();
-    // },
-
-    // audioPause() {
-    //     this.audio = document.getElementById("backgroundMusic");
-    //     this.audio2 = document.getElementById("startingSound");
-
-    //     this.audio.pause();
-    //     this.audio2.pause();
-    // },
-
     newBullet() {
         const width = 10;
         const height = 10;
@@ -140,12 +116,11 @@ const App = {
         this.balas.push(newBullet);
     },
 
-
     newEnemy() {
         const randomWidth = 80;
         const randomHeight = 100;
         const yRandomPosition = Math.trunc(Math.random() * (this.canvasSize.h - 100));
-        const randomSpeed = 2;
+        const randomSpeed = 4;
 
 
         const newOrcEnemy = new Orc(
@@ -217,7 +192,7 @@ const App = {
     showScores() {
         this.ctx.font = "35px Verdana";
         this.ctx.fillStyle = "blue";
-        this.ctx.fillText("Score: " + this.score++, 50, 90);
+        this.ctx.fillText("Score: " + this.score, 50, 90);
     },
 
     stopScore() {
@@ -243,6 +218,7 @@ const App = {
                         balas.bulletPosition.y < enemigos.orcPosition.y + 100
                     ) {
                         //console.log("boom");
+                        this.score = this.score + 200;
                         this.enemigos[i] = null;
                         this.balas[j] = null;
                     }
@@ -253,7 +229,7 @@ const App = {
             enemigos = this.enemigos[i];
             if (enemigos != null) {
                 if (
-                    this.newHero.positionHeroX() === enemigos.orcPosition.x
+                    this.newHero.positionHeroX() >= enemigos.orcPosition.x
                 ) {
                     this.stopGame()
                     audio3.volume = 0.1;
