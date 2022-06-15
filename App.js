@@ -12,6 +12,7 @@ const App = {
     //this.heroPosition.y:460,
     newBullet: '',
     audio1: document.getElementById("audio1"),
+    audio2: document.getElementById("audio2"),
 
     init(canvas) {
         this.setContext(canvas);
@@ -58,6 +59,11 @@ const App = {
 
             e.code === "Space"
                 ? this.newBullet() : null;
+
+            if (e.code === "Space") {
+                audio2.volume = 0.1;
+                audio2.play();
+            }
         });
 
 
