@@ -11,10 +11,16 @@ const App = {
     //this.heroPosition.x: 170,
     //this.heroPosition.y:460,
     newBullet: '',
+    audio1: document.getElementById("audio1"),
 
     init(canvas) {
         this.setContext(canvas);
         this.setCanvasDimensions(canvas);
+
+
+        audio1.volume = 0.1;
+        audio1.play();
+        // this.playStartingSound(audio2);
 
 
         this.imageBackground = new Image();
@@ -85,6 +91,30 @@ const App = {
         }
 
     },
+
+    // playStartingSound(audio2) {
+    //     //starting sound
+    //     this.audio2 = audio2;
+    //     this.audio2.src = "./Sound/startGame.mp3";
+
+    //     this.audio2.play();
+    // },
+
+    // playBackgroundSong(audio, audio2) {
+    //     //background song
+    //     this.audio = audio;
+    //     this.audio.src = "./Sound/defeat.mp3";
+
+    //     this.audio.play();
+    // },
+
+    // audioPause() {
+    //     this.audio = document.getElementById("backgroundMusic");
+    //     this.audio2 = document.getElementById("startingSound");
+
+    //     this.audio.pause();
+    //     this.audio2.pause();
+    // },
 
     newBullet() {
         const width = 10;
@@ -220,6 +250,7 @@ const App = {
                 ) {
                     this.stopGame()
 
+
                 }
             }
         }
@@ -228,14 +259,19 @@ const App = {
     stopGame() {
         window.cancelAnimationFrame(this.intervalId);
 
+        audio1.pause();
+
         const endGame = document.getElementById("endScreen");
         endGame.classList.remove("hidden");
+        endGame.classList.add("flex");
 
         const canvas = document.querySelector("#canvas");
         canvas.classList.add("hidden");
 
+
+
         const totalScore = document.getElementById("totalScore");
-        totalScore.innerHTML = this.score;
+        totalScore.innerHTML = "Your total score is: " + this.score;
 
 
         //Hacer un refresh

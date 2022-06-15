@@ -73,10 +73,15 @@ body {
   #endScreen {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color:wheat ;
-    display: flex;
-    justify-content: space-evenly;
+    /* display: flex; */
+    justify-content:center;
     align-items: center;
     flex-direction: column;
+  }
+
+  .flex{
+display: flex;
+
   }
 
   #restart-button {

@@ -6,7 +6,7 @@ window.onload = () => {
         //const scoreEndGame = document.getElementById("score");
         //const restartButton = document.getElementById("restartButton");
         //const audio = document.getElementById("backgroundMusic");
-        //const audio2 = document.getElementById("startingSound");
+        // const audio2 = document.getElementById("startingSound");
         canvas.classList.remove("hidden");
 
 
@@ -16,7 +16,7 @@ window.onload = () => {
             //scoreEndGame,
             //restartButton,
             //audio,
-            //audio2
+            // audio2
         );
         document.getElementById("logo").remove();
         document.getElementsByClassName("titulo")[0].remove();
