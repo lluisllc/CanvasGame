@@ -15,18 +15,18 @@ const App = {
     audio2: document.getElementById("audio2"),
     audio3: document.getElementById("audio3"),
 
+
     init(canvas) {
         this.setContext(canvas);
         this.setCanvasDimensions(canvas);
-
 
         audio1.volume = 0.1;
         audio1.play();
         // this.playStartingSound(audio2);
 
-
         this.imageBackground = new Image();
         this.imageBackground.src = "./IMGMarc/campo5.webp"
+
         //  this.endgame = endgame;
         this.createNewHero();
         this.setListeners();
@@ -57,17 +57,12 @@ const App = {
             e.code === "KeyW" ? (this.newHero.moveUpGamer = true) : null;
             e.code === "KeyS" ? (this.newHero.moveDownGamer = true) : null;
 
-
-            e.code === "Space"
-                ? this.newBullet() : null;
+            e.code === "Space" ? this.newBullet() : null;
 
             if (e.code === "Space") {
-                audio2.volume = 0.1;
-                audio2.play();
+                this.soundGo();
             }
         });
-
-
 
         document.addEventListener("keyup", (e) => {
             e.key === "ArrowUp" ? (this.newHero.moveUp = false) : null;
@@ -76,23 +71,23 @@ const App = {
             e.code === "KeyW" ? (this.newHero.moveUpGamer = false) : null;
             e.code === "KeyS" ? (this.newHero.moveDownGamer = false) : null;
         });
+    },
 
-
+    soundGo() {
+        var audio = new Audio("./Sound/pewpew.mp3");
+        audio.volume = 0.1;
+        audio.play();
     },
 
     refreshScreen() {
         this.intervalId = requestAnimationFrame(() => this.refreshScreen());
 
-        //ctx.clearRect(0, 0, canvas.width, canvas.height);
-
         this.checkIfCollision();
         this.clearCanvas();
         this.drawAll();
-
         this.newHero.move();
 
         this.framesCounter++;
-
         if (this.framesCounter % 50 === 0) {
             this.newEnemy();
         }
@@ -120,8 +115,7 @@ const App = {
         const randomWidth = 80;
         const randomHeight = 100;
         const yRandomPosition = Math.trunc(Math.random() * (this.canvasSize.h - 100));
-        const randomSpeed = 4;
-
+        const randomSpeed = 2;
 
         const newOrcEnemy = new Orc(
             this.ctx,
@@ -131,10 +125,7 @@ const App = {
             yRandomPosition,
             randomSpeed
         );
-
         this.enemigos.push(newOrcEnemy);
-
-
     },
 
     drawAll() {
@@ -152,11 +143,11 @@ const App = {
             }
         })
         this.showScores();
+        this.showHealth();
     },
 
     drawBackground() {
         this.ctx.drawImage(this.imageBackground, 0, 0, this.canvasSize.w, this.canvasSize.h);
-
 
         this.ctx.drawImage(
             this.imageBackground,
@@ -187,6 +178,13 @@ const App = {
 
     clearCanvas() {
         this.ctx.clearRect(0, 0, this.canvasSize.w, this.canvasSize.h);
+    },
+
+    showHealth() {
+
+        this.ctx.font = "35px Verdana";
+        this.ctx.fillStyle = "red";
+        this.ctx.fillText("Life: " + this.newHero.getHealth(), 350, 90);
     },
 
     showScores() {
@@ -228,14 +226,19 @@ const App = {
         for (let i = 0; i < this.enemigos.length; i++) {
             enemigos = this.enemigos[i];
             if (enemigos != null) {
-                if (
-                    this.newHero.positionHeroX() >= enemigos.orcPosition.x
-                ) {
-                    this.stopGame()
-                    audio3.volume = 0.1;
-                    audio3.play();
+                if (this.newHero.positionHeroX() >= enemigos.orcPosition.x) {
+                    //nos cargamos los que llegan a x del HERO
+                    this.enemigos[i] = null;
 
+                    if (this.enemigos[i] === null) {
+                        this.newHero.updateHealth();
+                    }
 
+                    if (this.newHero.getHealth() === 0) {
+                        this.stopGame();
+                        audio3.volume = 0.1;
+                        audio3.play();
+                    }
                 }
             }
         }
@@ -253,15 +256,12 @@ const App = {
         const canvas = document.querySelector("#canvas");
         canvas.classList.add("hidden");
 
-
-
         const totalScore = document.getElementById("totalScore");
         totalScore.innerHTML = "Your total score is: " + this.score;
-
 
         //Hacer un refresh
         const buttonRestart = document.querySelector("#restart-button");
         buttonRestart.setAttribute("onclick", "window.location.reload()");
-
     },
-}
+};
+

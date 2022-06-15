@@ -18,12 +18,16 @@ class Hero {
         this.moveDownGamer = false;
         this.image = new Image();
         this.image.src = `./IMGMarc/Goblin ghost.png`
-        // this.health = 3;
+        this.health = 3;
     }
 
-    // updateHealth (){
-    //     return this.heath - 1;
-    // }
+    updateHealth() {
+        return this.health--;
+    }
+
+    getHealth() {
+        return this.health
+    }
 
 
     drawHero() {
