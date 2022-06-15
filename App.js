@@ -62,19 +62,6 @@ const App = {
 
             e.code === "KeyW" ? (this.newHero.moveUpGamer = false) : null;
             e.code === "KeyS" ? (this.newHero.moveDownGamer = false) : null;
-            /* LLC
-                        e.code === "SPACEBAR"
-                            ? this.balas.push(
-                                (this.newBala = new Bala(
-                                    this.ctx,
-                                    this.newBullet.returnMoveX(),
-                                    this.newBullet.returnMoveY(),
-                                    10
-                                ))
-                            )
-                            : null;
-            */
-
         });
 
 
@@ -90,25 +77,12 @@ const App = {
         this.drawAll();
 
         this.newHero.move();
-        // this.checkBala();
-
-        /*
-        this.balas.forEach((bala) => {
-            if (bala != null) {
-                bala.drawBullet();
-            }
-        });
-*/
 
         this.framesCounter++;
 
         if (this.framesCounter % 100 === 0) {
             this.newEnemy();
         }
-
-        // if (this.framesCounter % 50 === 0) {
-        //     this.newBullet();
-        // }
 
     },
 
@@ -251,63 +225,6 @@ const App = {
         }
     },
 
-
-
-
-
-    // if (170 < this.newOrcEnemy.positionOrcX() + 80 &&
-    //     170 + 90 > this.newOrcEnemy.positionOrcX() &&
-    //     this.newHero.positionHeroY() < this.newOrcEnemy.positionOrcY() + 100 &&
-    //     100 + this.newHero.positionHeroY() > this.newOrcEnemy.positionOrcY()) {
-    //     console.log('OK')
-    // }
-    // if (this.enemigos.length) {
-    //     this.enemigos.forEach((elem) => {
-    //         if (elem != null) {
-    //             elem.drawOrc();
-
-    // if (this.newHero.positionHeroX() === this.newOrcEnemy.positionOrcX()) {
-    //     this.stopGame();
-    // }
-    // this.newHeroPosition.x <
-    // elem.newOrcEnemy.x + elem.orcSize.w - 10 &&
-    // this.newHero.newHeroPosition.x + this.newHero.heroSize.w - 10 >
-    // elem.orcPosition.x)
-    // this.newHero.newHeroPosition.y <
-    // elem.orcPosition.y + elem.orcSize.h - 10 &&
-    // this.newHero.heroSize.h - 10 + this.newHero.heroPosition.y >
-    // elem.orcPosition.y
-    // {
-    //     this.stopGame();
-    // }
-    //             }
-    //         });
-    //     }
-
-    /*
-        checkBala() {
-            for (let i = 0; i < this.enemigos.length; i++) {
-                //recorre el array enemigos
-                for (let j = 0; j < this.balas.length; j++) {
-                    //recorre el array balas
-                    enemigos = this.enemigos[i];
-                    balas = this.balas[j];
-                    //console.log(enemigos);
-                    if (enemigos != null && balas != null) {
-                        //preguntamos si es diferente a nulo.
-                        if (balas.x > enemigos.orcPosition.x && balas.x < enemigos.orc.x + 50) {
-                            //   balas.y > enemigos.orcPosition.y &&
-                            //   balas.y < enemigos.orcPosition.y + 50
-    
-                            //console.log("boom");
-                            this.enemigos[i] = null;
-                            this.balas[j] = null;
-                        }
-                    }
-                }
-            }
-        },
-    */
     stopGame() {
         window.cancelAnimationFrame(this.intervalId);
 
@@ -325,7 +242,5 @@ const App = {
         const buttonRestart = document.querySelector("#restart-button");
         buttonRestart.setAttribute("onclick", "window.location.reload()");
 
-        //Limpiamos el score ya que lo mostramos por pantalla al finalizar
-        //this.stopScore();
     },
 }
