@@ -18,7 +18,14 @@ class Hero {
         this.moveDownGamer = false;
         this.image = new Image();
         this.image.src = `./IMGMarc/Goblin ghost.png`
+        // this.health = 3;
     }
+
+    // updateHealth (){
+    //     return this.heath - 1;
+    // }
+
+
     drawHero() {
         //Primer parametro Image, posicion X, posicion Y, dimension coche W, dimension coche H
         this.ctx.drawImage(
