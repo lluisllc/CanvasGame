@@ -115,7 +115,8 @@ const App = {
     newBullet() {
         const width = 10;
         const height = 10;
-        const yPosition = this.newHero.positionHeroY() + 20;//Debería ser la del Heroe!
+        const yPosition = this.newHero.positionHeroY() + 20;
+        const randomSpeedBullet = 2
 
         const newBullet = new Bala(
             this.ctx,
@@ -123,7 +124,7 @@ const App = {
             height,
             this.canvasSize,
             yPosition,
-            this.speed
+            randomSpeedBullet
         );
         this.balas.push(newBullet);
     },
