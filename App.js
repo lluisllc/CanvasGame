@@ -116,7 +116,7 @@ const App = {
         const width = 10;
         const height = 10;
         const yPosition = this.newHero.positionHeroY() + 20;
-        const randomSpeedBullet = 2
+        const randomSpeedBullet = 4;
 
         const newBullet = new Bala(
             this.ctx,

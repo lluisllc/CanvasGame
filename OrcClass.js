@@ -7,8 +7,7 @@ class Orc {
         this.image = undefined;
         //this.randomImage = Math.trunc(Math.random() * (4 - 1) + 1);
         this.speed = speed;
-        //this.imageInstance = new Image();
-        // this.imageInstance.src = `images/rotatedCars/car${this.randomImage}.png`;
+       
         this.image = new Image();
         this.image.src = `./IMGMarc/Orc 6.png`
     }
