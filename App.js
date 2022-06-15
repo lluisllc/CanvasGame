@@ -18,7 +18,7 @@ const App = {
 
 
         this.imageBackground = new Image();
-        this.imageBackground.src = "/IMGMarc/campo5.webp"
+        this.imageBackground.src = "./IMGMarc/campo5.webp"
         //  this.endgame = endgame;
         this.createNewHero();
         this.setListeners();
