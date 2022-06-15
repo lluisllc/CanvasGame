@@ -133,6 +133,7 @@ const App = {
         const randomWidth = 80;
         const randomHeight = 100;
         const yRandomPosition = Math.trunc(Math.random() * (this.canvasSize.h - 100));
+        const randomSpeed = 2;
 
 
         const newOrcEnemy = new Orc(
@@ -141,7 +142,7 @@ const App = {
             randomHeight,
             this.canvasSize,
             yRandomPosition,
-            this.speed
+            randomSpeed
         );
 
         this.enemigos.push(newOrcEnemy);
