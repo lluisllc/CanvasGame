@@ -8,13 +8,11 @@ body {
     max-height: 550px;
   }
 
-
   .body-background {
     background-color: black;
     background-size: cover;
   }
  
-  
   .game-intro {
     display: flex;
     justify-content: center;
@@ -75,14 +73,21 @@ body {
     color:wheat ;
     /* display: flex; */
     justify-content:center;
-    align-items: center;
+    align-items:center;
     flex-direction: column;
+    margin: 0px;
+    padding: 0px;
   }
 
   .flex{
 display: flex;
+}
 
-  }
+p {
+  font-size: 25px;
+  margin: 0px;
+  padding: 0px;
+}
 
   #restart-button {
     background: linear-gradient(to bottom right, brown, black);

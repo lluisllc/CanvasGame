@@ -8,7 +8,6 @@ class Orc {
         //this.randomImage = Math.trunc(Math.random() * (4 - 1) + 1);
         this.speed = speed;
         this.isAlive = true;
-       
         this.image = new Image();
         this.image.src = `./IMGMarc/Orc 6.png`
     }
@@ -35,4 +34,4 @@ class Orc {
     positionOrcY() {
         return this.orcPosition.y;
     }
-}
+};

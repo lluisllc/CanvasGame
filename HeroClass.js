@@ -29,7 +29,6 @@ class Hero {
         return this.health
     }
 
-
     drawHero() {
         //Primer parametro Image, posicion X, posicion Y, dimension coche W, dimension coche H
         this.ctx.drawImage(
@@ -40,6 +39,7 @@ class Hero {
             this.heroSize.h
         );
     }
+
     move() {
         //solo necesitamos movimiento vertical
         (this.heroPosition.y <= this.canvasSize.h && this.moveDown) ||
@@ -51,6 +51,7 @@ class Hero {
             ? (this.heroPosition.y -= 4)
             : null;
     }
+
     positionHeroX() {
         return this.heroPosition.x;
     }
@@ -58,7 +59,7 @@ class Hero {
     positionHeroY() {
         return this.heroPosition.y;
     }
-}
+};
 
 
 
