@@ -259,7 +259,6 @@ const App = {
         const totalScore = document.getElementById("totalScore");
         totalScore.innerHTML = "Your total score is: " + this.score;
 
-        //Hacer un refresh
         const buttonRestart = document.querySelector("#restart-button");
         buttonRestart.setAttribute("onclick", "window.location.reload()");
     },
